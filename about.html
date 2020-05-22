@@ -1,0 +1,210 @@
+<html>
+<head>
+	<title>COVID-19 Dashboard</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/about.css" />
+</head>
+
+<body>
+
+	<div class="nav-container"> <!-- Code for navbar from Bootstrap -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+			<a class="navbar-brand" href="#">COVID-19 Tracker</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
+		  	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		    	<div class="navbar-nav">
+		      		<a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		      		<a class="nav-item nav-link" href="world.html">World Dashboard</a>
+		      		<a class="nav-item nav-link" href="us.html">US Dashboard</a>
+		      		<a class="nav-item nav-link active" href="about.html">About the Disease</a>
+		    	</div>
+		  	</div>
+		</nav>
+	</div>
+
+	<div class="main-container">
+
+		<div class="section-header">
+			<h1>COVID-19 (SARS‑CoV‑2) Virus and Disease Information</h1>
+		</div>
+
+		<div class="headline-video-container">
+
+			<div class="section-header">
+				<h3>What is the Novel Corona Virus (SARS‑CoV‑2)? - Johns Hopkins</h3>
+			</div>
+			
+			<div class="embed-responsive embed-responsive-16by9">
+  				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sHP0UIdZyI4" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+
+			<div class="section-content">
+				<p>COVID-19 is a pandemic disease caused by the severe acute respiratory syndrome coronavirus 2 (SARS‑CoV‑2).<br>This page aims to inform you and arm you with knowledge about the virus, how it spreads, and how you can protect yourself and your loved one.</p>
+				<p>Below you will find knowledge on the following topics: X, Y, Z.</p>
+			</div>
+		
+		</div>
+
+		<div class="section-header">
+			<h3>COVID 19 Information</h1>
+		</div>
+
+		<div class="video-container">
+
+			<div class="video-child">
+
+				<!-- Button trigger modal - Bootstrap -->
+				<img src="images/video-images/wash.png">
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#handwashing">
+				 	Launch Video
+				</button>
+				<p>This video from the CDC discusses the how, why, and importance of hand washing - it also discusses:</p>
+				<ol>
+					<li>Types of Soap</li>
+					<li>Hand Washing Methods</li>
+					<li>Hand Sanitizer</li>
+				</ol>
+
+				<!-- Modal - Bootstrap -->
+				<div class="modal fade" id="handwashing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 	<div class="modal-dialog modal-lg" role="document">
+				    	<div class="modal-content">
+				      		<div class="modal-header">
+				        		<h5 class="modal-title" id="handwash">What You Need To Know About Handwashing - CDC</h5>
+				        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          			<span aria-hidden="true">&times;</span>
+				        		</button>
+				      		</div>
+				      		<div class="modal-body">
+				        		<div class="embed-responsive embed-responsive-16by9">
+  									<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/d914EnpU4Fo" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+
+				      		</div>
+				    	</div>
+				  </div>
+				</div>
+
+			</div>
+
+			<div class="video-child">
+
+				<!-- Button trigger modal - Bootstrap -->
+				<img src="images/video-images/mutation.png">
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mutation">
+				 	Launch Video
+				</button>
+				<p>This video from the Verge Science discusses why we shouldn't freak out about mutations - it also discusses:</p>
+				<ol>
+					<li>Genetic Mutation</li>
+					<li>Recombination</li>
+					<li>Strains vs. Lineages</li>
+					<li>RNA Virus Pathology</li>
+				</ol>
+
+				<!-- Modal - Bootstrap -->
+				<div class="modal fade" id="mutation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 	<div class="modal-dialog modal-lg" role="document">
+				    	<div class="modal-content">
+				      		<div class="modal-header">
+				        		<h5 class="modal-title" id="mutation">The coronavirus is mutating. But don’t freak out yet. - Verge Science</h5>
+				        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          			<span aria-hidden="true">&times;</span>
+				        		</button>
+				      		</div>
+				      		<div class="modal-body">
+				        		<div class="embed-responsive embed-responsive-16by9">
+  									<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/SrtZKnQysyY" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+
+				      		</div>
+				    	</div>
+				  </div>
+				</div>
+
+			</div>
+
+			<div class="video-child">
+
+				<!-- Button trigger modal - Bootstrap -->
+				<img src="images/video-images/symptoms.png">
+				<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#symptoms">
+				 	Launch Video
+				</button>
+				<p>This short video from the CDC shows the symptoms of COVID19 - specifically it shows:</p>
+				<ol>
+					<li>Cough</li>
+					<li>Fever</li>
+					<li>Shortness of Breath</li>
+				</ol>
+
+				<!-- Modal - Bootstrap -->
+				<div class="modal fade" id="symptoms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				 	<div class="modal-dialog modal-lg" role="document">
+				    	<div class="modal-content">
+				      		<div class="modal-header">
+				        		<h5 class="modal-title" id="symptoms">COVID 19 Symptoms - CDC</h5>
+				        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          			<span aria-hidden="true">&times;</span>
+				        		</button>
+				      		</div>
+				      		<div class="modal-body">
+				        		<div class="embed-responsive embed-responsive-16by9">
+  									<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oGruT7Fd54E" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+
+				      		</div>
+				    	</div>
+				  </div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="form-container">
+
+			<div class="section-header">
+				<h3>Want updates?</h1>
+			</div>
+			<form class="bg-warning">
+
+				<div class="section-header">
+					<h4>Sign up below to receive site updates</h4>
+				</div>
+
+				<div class="form-group">
+			    	<label for="name">Name</label>
+			    	<input type="text" class="form-control" id="exampleInputEmail1" placeholder="John Doe">
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label for="exampleInputEmail1">Email address</label>
+			    	<input type="email" class="form-control" id="exampleInputEmail1" placeholder="name@example.com">
+			  	</div>
+
+			  	<button type="submit" class="btn btn-dark">Submit</button>
+
+			</form>
+		</div>
+	
+	</div>
+
+	<footer>
+		<p>Copyright Ryan Davis 2020 - daviryan@oregonstate.edu</p>
+	</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+.headline-video-container {
+	padding: 30px;
+	padding-right: 200px;
+	padding-left: 200px;
+}
+
+.video-container {
+	padding: 30px;
+    margin: auto;
+    display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.video-child {
+	padding: 30px;
+	margin: auto;
+    border: 2px solid #EEE;
+    background-color: 545454;
+  	border-radius: 10px;
+    display: flex;
+    flex: 0 0 30px;
+    color: white;
+    text-align: left;
+	flex-direction: column;
+}
+
+.modal-content {
+   background-color: #404040;
+}
