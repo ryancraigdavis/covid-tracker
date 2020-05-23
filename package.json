@@ -1,0 +1,23 @@
+{
+  "name": "covid",
+  "version": "1.0.0",
+  "description": "covid-19 dashboards",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryancraigdavis/covid-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryancraigdavis/covid-tracker/issues"
+  },
+  "homepage": "https://github.com/ryancraigdavis/covid-tracker#readme",
+  "dependencies": {
+    "http": "0.0.1-security"
+  }
+}

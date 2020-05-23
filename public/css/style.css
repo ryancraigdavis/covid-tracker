@@ -20,10 +20,25 @@ body {
     margin-left: auto;
 }
 
-.dashboard-container {
+.slider-news-container {
 	padding: 30px;
-	padding-right: 200px;
-	padding-left: 200px;
+	display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.newsfeed {
+	padding: 30px;
+    border: 2px solid #EEE;
+    background-color: 545454;
+    display: flex;
+    flex: 1 1 10px;
+    color: #F9C132;
+    text-align: center;
+	flex-direction: row;
 }
 
 .section-header {
@@ -38,7 +53,7 @@ body {
 	color: white;
 }
 
-.news-container {
+.curated-news-container {
 	padding: 30px;
     margin: auto;
     display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
