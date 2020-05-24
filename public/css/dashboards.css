@@ -26,6 +26,10 @@
 	flex-direction: row;
 }
 
+input {
+	width: 300px;
+}
+
 footer {
 	position: bottom;
 }

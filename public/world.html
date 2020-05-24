@@ -33,47 +33,38 @@
 			<h1>COVID-19 World Dashboard</h1>
 		</div>
 
-		<div class="dashboard-main-container">
-			<div>
-				<div class="dropdown">
-					<button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Select Country
-				  	</button>
-				  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    	<a class="dropdown-item" id="countrycode" value="US">United States</a>
-				    	<a class="dropdown-item" id="countrycode" value="CA">Canada</a>
-				    	<a class="dropdown-item" id="countrycode" value="MX">Mexico</a>
-				  	</div>
-				</div>
-			</div>	
+		<div class="dashboard-main-container">	
+			
+			<select id="country-dropdown-select" class="dropdown-select" onchange="getCountryValue(this)"></select>
+
 		
 			<div class="dashboard-container">
 
 				<div class="dashboard-child" id="total-recovered">
-					<canvas id="cases-world-chart" width="400" height="400"></canvas>
+					<canvas id="cases-world-chart" width="350" height="350"></canvas>
 				</div>
 
 				<div class="dashboard-child" id="total-cases">
-					<canvas id="recovered-world-chart" width="400" height="400"></canvas>
+					<canvas id="recovered-world-chart" width="350" height="350"></canvas>
 				</div>
 
 				<div class="dashboard-child" id="total-dead">
-					<canvas id="dead-world-chart" width="400" height="400"></canvas>
+					<canvas id="dead-world-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child">
+				<div class="dashboard-child" id="cases-country-dashboard">
 					<canvas id="cases-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child">
+				<div class="dashboard-child" id="prediction-country-dashboard">
 					<canvas id="prediction-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child">
+				<div class="dashboard-child" id="recovered-country-dashboard">
 					<canvas id="recovered-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child">
+				<div class="dashboard-child" id="dead-country-dashboard">
 					<canvas id="dead-country-chart" width="350" height="350"></canvas>
 				</div>
 
@@ -93,6 +84,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script src="scripts/world.js"></script>
+<script src="scripts/country-dropdown.js"></script>
 </html>
 
 

@@ -1,28 +1,6 @@
-// Submit buttons
-//document.getElementById("update").addEventListener("click", getCountry);
+// Get the country - default is US and is passed at the beginning
+	
 
-
-// Builds the dashboard titles
-var totalRecovered = document.getElementById("total-recovered")
-var totalRecoveredH4 = document.createElement("h4");
-
-var totalCases = document.getElementById("total-cases")
-var totalCasesH4 = document.createElement("h4");
-
-var totalDead = document.getElementById("total-dead")
-var totalDeadH4 = document.createElement("h4");
-
-var casesCountry = document.getElementById("cases-country")
-var casesCountryH4 = document.createElement("h4");
-
-var deadCountry = document.getElementById("dead-country")
-var deadCountryH4 = document.createElement("h4");
-
-var recoveredCountry = document.getElementById("recovered-country")
-var recoveredCountryH4 = document.createElement("h4");
-
-var predictionCasesCountry = document.getElementById("prediction-cases-country")
-var predictionCasesCountryH4 = document.createElement("h4");
 
 function getWorldData(){
 	// Includes api grabbing of case data
@@ -355,16 +333,8 @@ function getWorldData(){
 	req.send(null);
 };
 
-function getCountryData(){
-	// Same newsfeed function from the main page but with a different endpoint for grabbing country specific news
-	// Includes api grabbing of case data
-
-	// Get the country
-	var country = document.getElementById("countrycode").value
-
-	if (country === undefined) {
-		country = 'US'
-	};
+function getCountryData(country){
+	// Takes a country code as an input and produces a set of charts based on that country
 
 	dateRange = [];
 	day = new Date();
@@ -385,14 +355,21 @@ function getCountryData(){
 	req.withCredentials = false;
 	req.onload = function (e) {
 	  	if (req.readyState === 4) {
-	    	if (req.status === 200) {
+	    	if (req.status === 200 && (JSON.parse(req.responseText)).length !== 0) {
 
-    			var data = JSON.parse(req.responseText)
+    			var data = JSON.parse(req.responseText);
 
     			// Chart for country death data for 2 months
     			// Chart.js information from documentation
+    			// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+    			var removeChart = document.getElementById('dead-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('dead-country-dashboard').innerHTML += 
+				'<canvas id="dead-country-chart" width="350" height="350"></canvas>'
+
+				// Now we create the chart object, and pass through the data
     			var ctx = document.getElementById('dead-country-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
+				var casesChart = new Chart(ctx, {
 				    type: 'bar',
 				    data: {
 				        labels: [dateRange[59], dateRange[58], 
@@ -489,8 +466,15 @@ function getCountryData(){
 				});
 
 				// Chart for country recovered data for 2 months
+				// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+    			var removeChart = document.getElementById('recovered-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('recovered-country-dashboard').innerHTML += 
+				'<canvas id="recovered-country-chart" width="350" height="350"></canvas>'
+
+				// Now we create the chart object, and pass through the data
     			var ctx = document.getElementById('recovered-country-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
+				var recoveredChart = new Chart(ctx, {
 				    type: 'bar',
 				    data: {
 				        labels: [dateRange[59], dateRange[58], 
@@ -587,8 +571,16 @@ function getCountryData(){
 				});
 
 				// Chart for country cases data for 2 months
+				// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+				// Then we must add back the canvas - this is to prevent multiple charts from rendering in the same spot
+    			var removeChart = document.getElementById('cases-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('cases-country-dashboard').innerHTML += 
+				'<canvas id="cases-country-chart" width="350" height="350"></canvas>'
+
+				// Now we create the chart object, and pass through the data
     			var ctx = document.getElementById('cases-country-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
+				var deathChart = new Chart(ctx, {
 				    type: 'bar',
 				    data: {
 				        labels: [dateRange[59], dateRange[58], 
@@ -686,6 +678,59 @@ function getCountryData(){
 
 	    	} else {
 	      		console.error(req.statusText);
+	      		// With a bad request, or no data available, we append that message to the box
+    			var removeChart = document.getElementById('dead-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('dead-country-dashboard').innerHTML += 
+				'<canvas id="dead-country-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('dead-country-chart').getContext('2d');
+
+				var deadChart = new Chart(ctx, {
+					options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'No Data Available'
+				        }
+				    }
+				});
+
+				// With a bad request, or no data available, we append that message to the box
+    			var removeChart = document.getElementById('recovered-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('recovered-country-dashboard').innerHTML += 
+				'<canvas id="recovered-country-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('recovered-country-chart').getContext('2d');
+
+				var recoveredChart = new Chart(ctx, {
+					options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'No Data Available'
+				        }
+				    }
+				});
+
+				// With a bad request, or no data available, we append that message to the box
+    			var removeChart = document.getElementById('cases-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('cases-country-dashboard').innerHTML += 
+				'<canvas id="cases-country-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('cases-country-chart').getContext('2d');
+
+				var predChart = new Chart(ctx, {
+					options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'No Data Available'
+				        }
+				    }
+				});
 	    	}
 	  	}
 	};
@@ -695,22 +740,9 @@ function getCountryData(){
 	req.send(null);
 };
 
-function getPredictionData(){
-	// Same newsfeed function from the main page but with a different endpoint for grabbing country specific news
-	// Includes api grabbing of case data
-
-	// Date help from 2 stack overflows with many revisions
-	// https://stackoverflow.com/questions/1296358/subtract-days-from-a-date-in-javascript
-	// https://stackoverflow.com/questions/27939773/tolocaledatestring-short-format
-
-
-	// Get the country
-	var country = document.getElementById("countrycode").value
-
-	if (country === undefined) {
-		country = 'US'
-	};
-
+function getPredictionData(country){
+	// Takes a country code as an input and produces a prediction chart based on that country
+	
 	dateRangePred = [];
 	predDay = new Date();
 
@@ -733,8 +765,16 @@ function getPredictionData(){
     			var data = JSON.parse(req.responseText)
 
     			// Chart for predicted country cases data for 2 weeks
+    			// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+    			var removeChart = document.getElementById('prediction-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('prediction-country-dashboard').innerHTML += 
+				'<canvas id="prediction-country-chart" width="350" height="350"></canvas>'
+
+				// Now we create the chart object, and pass through the data
     			var ctx = document.getElementById('prediction-country-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
+
+				var predChart = new Chart(ctx, {
 				    type: 'line',
 				    data: {
 				        labels: [dateRangePred[0], dateRangePred[1], dateRangePred[2], dateRangePred[3], 
@@ -791,9 +831,29 @@ function getPredictionData(){
 				    }
 				});
 
+				
+
 
 	    	} else {
 	      		console.error(req.statusText);
+	      		// With a bad request, or no data available, we append that message to the box
+    			var removeChart = document.getElementById('prediction-country-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('prediction-country-dashboard').innerHTML += 
+				'<canvas id="prediction-country-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('prediction-country-chart').getContext('2d');
+
+				var predChart = new Chart(ctx, {
+					options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'No Data Available'
+				        }
+				    }
+				});
+
 	    	}
 	  	}
 	};
@@ -806,18 +866,15 @@ function getPredictionData(){
 
 
 
-// Function automatically calls on page load
-getCountryData();
+// Functions automatically called on page load
+// US is the default country passed
+getCountryData('US');
 getWorldData();
-getPredictionData();
+getPredictionData('US');
 
-
-
-
-
-
-
-
-
-
-
+function getCountryValue(code) {
+	// When the user selects a new country, the country chart functions
+	// are called again but with the new code
+  	getCountryData(code.value);
+	getPredictionData(code.value);
+}
