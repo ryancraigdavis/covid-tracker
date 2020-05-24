@@ -1,11 +1,11 @@
 .dashboard-main-container {
 	padding: 30px;
-	padding-right: 200px;
-	padding-left: 200px;
+	padding-right: 50px;
+	padding-left: 50px;
 }
 
 .dashboard-container {
-	padding: 30px;
+	padding: 10px;
     margin: auto;
     display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
 	flex-direction: row;
@@ -16,15 +16,14 @@
 }
 
 .dashboard-child {
-	padding: 30px;
-	margin: auto;
+	padding: 5px;
+	margin: 5px;
     border: 2px solid #EEE;
-    background-color: #cccccc;
-  	border-radius: 10px;
+    background-color: #6b6b6b;
     display: flex;
     flex: 0 0 30px;
     text-align: left;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 footer {

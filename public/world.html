@@ -34,39 +34,6 @@
 		</div>
 
 		<div class="dashboard-main-container">
-		
-			<div class="dashboard-container">
-
-				<div class="dashboard-child" id="total-recovered">
-					<canvas id="myChart" width="400" height="400"></canvas>
-				</div>
-
-				<div class="dashboard-child" id="total-cases">
-					<p>2</p>
-				</div>
-
-				<div class="dashboard-child" id="total-dead">
-					<p>3</p>
-				</div>
-
-				<div class="dashboard-child" id="cases-country">
-					<p>4</p>
-				</div>
-
-				<div class="dashboard-child" id="dead-country">
-					<p>5</p>
-				</div>
-
-				<div class="dashboard-child" id="recovered-country">
-					<p>6</p>
-				</div>
-
-				<div class="dashboard-child" id="prediction-cases-country">
-					<p>7</p>
-				</div>
-
-			</div>
-
 			<div>
 				<div class="dropdown">
 					<button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,6 +46,40 @@
 				  	</div>
 				</div>
 			</div>	
+		
+			<div class="dashboard-container">
+
+				<div class="dashboard-child" id="total-recovered">
+					<canvas id="cases-world-chart" width="400" height="400"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="total-cases">
+					<canvas id="recovered-world-chart" width="400" height="400"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="total-dead">
+					<canvas id="dead-world-chart" width="400" height="400"></canvas>
+				</div>
+
+				<div class="dashboard-child">
+					<canvas id="cases-country-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child">
+					<canvas id="prediction-country-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child">
+					<canvas id="recovered-country-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child">
+					<canvas id="dead-country-chart" width="350" height="350"></canvas>
+				</div>
+
+			</div>
+
+			
 
 		</div>
 	

@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background: #404040
+  background: #333232
 }
 
 .nav-container { /* Nav CSS Code from Bootstrap Website */
@@ -50,6 +50,12 @@ body {
 .section-content {
 	margin-top: 30px;
 	text-align: left;
+	color: white;
+}
+
+.dashboard-content {
+	margin: 5px;
+	text-align: center;
 	color: white;
 }
 
