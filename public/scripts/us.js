@@ -1,389 +1,7 @@
 // Get the country - default is US and is passed at the beginning
-	
 
-
-function getWorldData(){
-	// Includes api grabbing of case data
-	// Creates a date object and then pushes dates going back 2 months to an array
-
-	dateRangeWorld = [];
-	worldDay = new Date();
-
-	for (var i = 0; i < 90; i++) {
-
-		worldDay.setDate(worldDay.getDate() - 1);
-		dateRangeWorld.push(worldDay.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }));
-	};
-
-	var timelineUrl = 'https://cors-anywhere.herokuapp.com/https://covid19-api.org/api/timeline'
-
-  	// Creates the response
-	var req = new XMLHttpRequest();
-	req.open("GET", timelineUrl, true);
-	req.withCredentials = false;
-	req.onload = function (e) {
-	  	if (req.readyState === 4) {
-	    	if (req.status === 200) {
-
-    			var data = JSON.parse(req.responseText)
-
-    			// Chart for world death data for 2 months
-    			// Chart.js information from documentation
-    			var ctx = document.getElementById('dead-world-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
-				    type: 'bar',
-				    data: {
-				        labels: [dateRangeWorld[59], dateRangeWorld[58], 
-				        dateRangeWorld[57], dateRangeWorld[56], dateRangeWorld[55], dateRangeWorld[54], dateRangeWorld[53], dateRangeWorld[52], dateRangeWorld[51], 
-				        dateRangeWorld[50], dateRangeWorld[49], dateRangeWorld[48], dateRangeWorld[47], dateRangeWorld[46], dateRangeWorld[45], dateRangeWorld[44], 
-				        dateRangeWorld[43], dateRangeWorld[42], dateRangeWorld[41], dateRangeWorld[40], dateRangeWorld[39], dateRangeWorld[38], dateRangeWorld[37], 
-				        dateRangeWorld[36], dateRangeWorld[35], dateRangeWorld[34], dateRangeWorld[33], dateRangeWorld[32], dateRangeWorld[31], dateRangeWorld[30], 
-				        dateRangeWorld[29], dateRangeWorld[28], dateRangeWorld[27], dateRangeWorld[26], dateRangeWorld[25], dateRangeWorld[24], dateRangeWorld[23], 
-				        dateRangeWorld[22], dateRangeWorld[21], dateRangeWorld[20], dateRangeWorld[19], dateRangeWorld[18], dateRangeWorld[17], dateRangeWorld[16], dateRangeWorld[15], 
-				        dateRangeWorld[14], dateRangeWorld[13], dateRangeWorld[12], dateRangeWorld[11], dateRangeWorld[10], dateRangeWorld[9], dateRangeWorld[8], dateRangeWorld[7], 
-				        dateRangeWorld[6], dateRangeWorld[5], dateRangeWorld[4], dateRangeWorld[3], dateRangeWorld[2], dateRangeWorld[1], dateRangeWorld[0]],
-				        datasets: [{
-				            label: '# of Deaths',
-				            data: [data[59].total_deaths, data[58].total_deaths, data[57].total_deaths, data[56].total_deaths, data[55].total_deaths, data[54].total_deaths,
-				            data[53].total_deaths, data[52].total_deaths, data[51].total_deaths, data[50].total_deaths, data[49].total_deaths, data[48].total_deaths,
-				            data[47].total_deaths, data[46].total_deaths, data[45].total_deaths, data[44].total_deaths, data[43].total_deaths, data[42].total_deaths,
-				            data[41].total_deaths, data[40].total_deaths, data[39].total_deaths, data[38].total_deaths, data[37].total_deaths, data[36].total_deaths,
-				            data[35].total_deaths, data[34].total_deaths, data[33].total_deaths, data[32].total_deaths, data[31].total_deaths, data[30].total_deaths,
-				            data[29].total_deaths, data[28].total_deaths, data[27].total_deaths, data[26].total_deaths, 
-				            data[25].total_deaths, data[24].total_deaths, data[23].total_deaths, data[22].total_deaths, data[21].total_deaths, data[20].total_deaths, 
-				            data[19].total_deaths, data[18].total_deaths, data[17].total_deaths, data[16].total_deaths, data[15].total_deaths, data[14].total_deaths, 
-				            data[13].total_deaths, data[12].total_deaths, data[11].total_deaths, data[10].total_deaths, data[9].total_deaths, data[8].total_deaths, 
-				            data[7].total_deaths, data[6].total_deaths, data[5].total_deaths, data[4].total_deaths, data[3].total_deaths, data[2].total_deaths, data[1].total_deaths, data[0].total_deaths],
-				            backgroundColor: [
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				            	'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 
-				                'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 0, 1)'
-				            ],
-				            borderColor: [
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				               
-				            ],
-				            borderWidth: 1
-				        }]
-				    },
-				    options: {
-				    	title: {
-				            display: true,
-				            fontSize: 20,
-				            fontColor: 'white',
-				            text: 'Total Global Deaths for Previous 2 Months'
-        				},
-				    	legend: {
-				            labels: {
-				                fontColor: 'white'
-				            }
-				        },
-				        scales: {
-				            yAxes: [{
-				                ticks: {
-				                	fontColor: 'white',
-				                    beginAtZero: true,
-				                    // Found the follow splitting function for chart.js here:
-				                    // https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
-				                    userCallback: function(value, index, values) { 
-								        value = value.toString();
-								        value = value.split(/(?=(?:...)*$)/);
-								        value = value.join(',');
-								        return value;
-    								}
-				                }
-				            }],
-				            xAxes: [{
-				                ticks: {
-				                	fontColor: 'white'
-				                }
-				            }]
-				        }
-				    }
-				});
-
-				// Chart for world recovered data for 2 months
-    			var ctx = document.getElementById('recovered-world-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
-				    type: 'bar',
-				    data: {
-				        labels: [dateRangeWorld[59], dateRangeWorld[58], 
-				        dateRangeWorld[57], dateRangeWorld[56], dateRangeWorld[55], dateRangeWorld[54], dateRangeWorld[53], dateRangeWorld[52], dateRangeWorld[51], 
-				        dateRangeWorld[50], dateRangeWorld[49], dateRangeWorld[48], dateRangeWorld[47], dateRangeWorld[46], dateRangeWorld[45], dateRangeWorld[44], 
-				        dateRangeWorld[43], dateRangeWorld[42], dateRangeWorld[41], dateRangeWorld[40], dateRangeWorld[39], dateRangeWorld[38], dateRangeWorld[37], 
-				        dateRangeWorld[36], dateRangeWorld[35], dateRangeWorld[34], dateRangeWorld[33], dateRangeWorld[32], dateRangeWorld[31], dateRangeWorld[30], 
-				        dateRangeWorld[29], dateRangeWorld[28], dateRangeWorld[27], dateRangeWorld[26], dateRangeWorld[25], dateRangeWorld[24], dateRangeWorld[23], 
-				        dateRangeWorld[22], dateRangeWorld[21], dateRangeWorld[20], dateRangeWorld[19], dateRangeWorld[18], dateRangeWorld[17], dateRangeWorld[16], dateRangeWorld[15], 
-				        dateRangeWorld[14], dateRangeWorld[13], dateRangeWorld[12], dateRangeWorld[11], dateRangeWorld[10], dateRangeWorld[9], dateRangeWorld[8], dateRangeWorld[7], 
-				        dateRangeWorld[6], dateRangeWorld[5], dateRangeWorld[4], dateRangeWorld[3], dateRangeWorld[2], dateRangeWorld[1], dateRangeWorld[0]],
-				        datasets: [{
-				            label: '# of Recovered',
-				            data: [data[59].total_recovered, data[58].total_recovered, data[57].total_recovered, data[56].total_recovered, data[55].total_recovered, data[54].total_recovered,
-				            data[53].total_recovered, data[52].total_recovered, data[51].total_recovered, data[50].total_recovered, data[49].total_recovered, data[48].total_recovered,
-				            data[47].total_recovered, data[46].total_recovered, data[45].total_recovered, data[44].total_recovered, data[43].total_recovered, data[42].total_recovered,
-				            data[41].total_recovered, data[40].total_recovered, data[39].total_recovered, data[38].total_recovered, data[37].total_recovered, data[36].total_recovered,
-				            data[35].total_recovered, data[34].total_recovered, data[33].total_recovered, data[32].total_recovered, data[31].total_recovered, data[30].total_recovered,
-				            data[29].total_recovered, data[28].total_recovered, data[27].total_recovered, data[26].total_recovered, 
-				            data[25].total_recovered, data[24].total_recovered, data[23].total_recovered, data[22].total_recovered, data[21].total_recovered, data[20].total_recovered, 
-				            data[19].total_recovered, data[18].total_recovered, data[17].total_recovered, data[16].total_recovered, data[15].total_recovered, data[14].total_recovered, 
-				            data[13].total_recovered, data[12].total_recovered, data[11].total_recovered, data[10].total_recovered, data[9].total_recovered, data[8].total_recovered, 
-				            data[7].total_recovered, data[6].total_recovered, data[5].total_recovered, data[4].total_recovered, data[3].total_recovered, data[2].total_recovered, data[1].total_recovered, data[0].total_recovered],
-				            backgroundColor: [
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				            	'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 
-				                'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)', 'rgba(0, 187, 255, 1)'
-
-				            ],
-				            borderColor: [
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				               
-				            ],
-				            borderWidth: 1
-				        }]
-				    },
-				    options: {
-				    	title: {
-				            display: true,
-				            fontSize: 20,
-				            fontColor: 'white',
-				            text: 'Total Global Recovered for Previous 2 Months'
-        				},
-				    	legend: {
-				            labels: {
-				                fontColor: 'white'
-				            }
-				        },
-				        scales: {
-				            yAxes: [{
-				                ticks: {
-				                	fontColor: 'white',
-				                    beginAtZero: true,
-				                    // Found the follow splitting function for chart.js here:
-				                    // https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
-				                    userCallback: function(value, index, values) { 
-								        value = value.toString();
-								        value = value.split(/(?=(?:...)*$)/);
-								        value = value.join(',');
-								        return value;
-    								}
-				                }
-				            }],
-				            xAxes: [{
-				                ticks: {
-				                	fontColor: 'white'
-				                }
-				            }]
-				        }
-				    }
-				});
-
-				// Chart for world cases data for 2 months
-    			var ctx = document.getElementById('cases-world-chart').getContext('2d');
-				var myChart = new Chart(ctx, {
-				    type: 'bar',
-				    data: {
-				        labels: [dateRangeWorld[59], dateRangeWorld[58], 
-				        dateRangeWorld[57], dateRangeWorld[56], dateRangeWorld[55], dateRangeWorld[54], dateRangeWorld[53], dateRangeWorld[52], dateRangeWorld[51], 
-				        dateRangeWorld[50], dateRangeWorld[49], dateRangeWorld[48], dateRangeWorld[47], dateRangeWorld[46], dateRangeWorld[45], dateRangeWorld[44], 
-				        dateRangeWorld[43], dateRangeWorld[42], dateRangeWorld[41], dateRangeWorld[40], dateRangeWorld[39], dateRangeWorld[38], dateRangeWorld[37], 
-				        dateRangeWorld[36], dateRangeWorld[35], dateRangeWorld[34], dateRangeWorld[33], dateRangeWorld[32], dateRangeWorld[31], dateRangeWorld[30], 
-				        dateRangeWorld[29], dateRangeWorld[28], dateRangeWorld[27], dateRangeWorld[26], dateRangeWorld[25], dateRangeWorld[24], dateRangeWorld[23], 
-				        dateRangeWorld[22], dateRangeWorld[21], dateRangeWorld[20], dateRangeWorld[19], dateRangeWorld[18], dateRangeWorld[17], dateRangeWorld[16], dateRangeWorld[15], 
-				        dateRangeWorld[14], dateRangeWorld[13], dateRangeWorld[12], dateRangeWorld[11], dateRangeWorld[10], dateRangeWorld[9], dateRangeWorld[8], dateRangeWorld[7], 
-				        dateRangeWorld[6], dateRangeWorld[5], dateRangeWorld[4], dateRangeWorld[3], dateRangeWorld[2], dateRangeWorld[1], dateRangeWorld[0]],
-				        datasets: [{
-				            label: '# of Cases',
-				            data: [data[59].total_cases, data[58].total_cases, data[57].total_cases, data[56].total_cases, data[55].total_cases, data[54].total_cases,
-				            data[53].total_cases, data[52].total_cases, data[51].total_cases, data[50].total_cases, data[49].total_cases, data[48].total_cases,
-				            data[47].total_cases, data[46].total_cases, data[45].total_cases, data[44].total_cases, data[43].total_cases, data[42].total_cases,
-				            data[41].total_cases, data[40].total_cases, data[39].total_cases, data[38].total_cases, data[37].total_cases, data[36].total_cases,
-				            data[35].total_cases, data[34].total_cases, data[33].total_cases, data[32].total_cases, data[31].total_cases, data[30].total_cases,
-				            data[29].total_cases, data[28].total_cases, data[27].total_cases, data[26].total_cases, 
-				            data[25].total_cases, data[24].total_cases, data[23].total_cases, data[22].total_cases, data[21].total_cases, data[20].total_cases, 
-				            data[19].total_cases, data[18].total_cases, data[17].total_cases, data[16].total_cases, data[15].total_cases, data[14].total_cases, 
-				            data[13].total_cases, data[12].total_cases, data[11].total_cases, data[10].total_cases, data[9].total_cases, data[8].total_cases, 
-				            data[7].total_cases, data[6].total_cases, data[5].total_cases, data[4].total_cases, data[3].total_cases, data[2].total_cases, data[1].total_cases, data[0].total_cases],
-				            backgroundColor: [
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				            	'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 
-				                'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)', 'rgba(249, 193, 50, 1)'
-
-				            ],
-				            borderColor: [
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)',
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				                'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
-				               
-				            ],
-				            borderWidth: 1
-				        }]
-				    },
-				    options: {
-				    	title: {
-				            display: true,
-				            fontSize: 20,
-				            fontColor: 'white',
-				            text: 'Total Global Cases for Previous 2 Months'
-        				},
-				    	legend: {
-				            labels: {
-				                fontColor: 'white'
-				            }
-				        },
-				        scales: {
-				            yAxes: [{
-				                ticks: {
-				                	fontColor: 'white',
-				                    beginAtZero: true,
-				                    // Found the follow splitting function for chart.js here:
-				                    // https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
-				                    userCallback: function(value, index, values) { 
-								        value = value.toString();
-								        value = value.split(/(?=(?:...)*$)/);
-								        value = value.join(',');
-								        return value;
-    								}
-				                }
-				            }],
-				            xAxes: [{
-				                ticks: {
-				                	fontColor: 'white'
-				                }
-				            }]
-				        }
-				    }
-				});
-
-				// Chart for world % data
-				// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
-    			var removeChart = document.getElementById('percent-pie-chart');
-				removeChart.parentNode.removeChild(removeChart);
-				document.getElementById('percent-pie-dashboard').innerHTML += 
-				'<canvas id="percent-pie-chart" width="350" height="350"></canvas>'
-
-				// These two variables are specific to the pie chart, the second is the total active cases
-				// The first is the regular number of total cases but with the comma separators added
-				// I used this code snippet: 
-				// https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
-				var totalCasesTitle = data[0].total_cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				var active = data[0].total_cases - data[0].total_recovered - data[0].total_deaths
-
-				// Now we create the chart object, and pass through the data
-    			var ctx = document.getElementById('percent-pie-chart').getContext('2d');
-				var percentPieChart = new Chart(ctx, {
-				    type: 'pie',
-				    data: {
-				        labels: ['% Active', '% Dead', '% Recovered'],
-				        datasets: [{
-				            label: 'Current % of Total Cases',
-				            data: [Math.round((active / data[0].total_cases)*10000)/100, 
-				            Math.round((data[0].total_deaths / data[0].total_cases)*10000)/100, 
-				            Math.round((data[0].total_recovered / data[0].total_cases)*10000)/100],
-				            backgroundColor: [
-				            	'rgba(0, 252, 33, 1)', 'rgba(255, 0, 0, 1)', 'rgba(0, 187, 255, 1)'
-				            ],
-				            borderColor: [
-				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)'   
-				            ],
-				            borderWidth: 1
-				        }]
-				    },
-				    options: {
-				    	title: {
-				            display: true,
-				            fontSize: 20,
-				            fontColor: 'white',
-				            text: '% of Total Global Cases: '+totalCasesTitle
-        				},
-				    	legend: {
-				            labels: {
-				                fontColor: 'white'
-				            }
-				        }
-				    }
-				});
-
-
-	    	} else {
-	      		console.error(req.statusText);
-	    	}
-	  	}
-	};
-	req.onerror = function (e) {
-	  console.error(req.statusText);
-	};
-	req.send(null);
-};
-
-function getCountryData(country,countryName){
-	// Takes a country code and name as an input and produces a set of charts based on that country
+function getUsData(country,countryName){
+	// Takes a country code as an input and produces a set of charts based on that country
 
 	dateRange = [];
 	day = new Date();
@@ -483,7 +101,7 @@ function getCountryData(country,countryName){
 				            display: true,
 				            fontSize: 20,
 				            fontColor: 'white',
-				            text: 'Deaths for Previous 2 Months - '+countryName
+				            text: countryName+' Deaths for Previous 2 Months'
         				},
 				    	legend: {
 				            labels: {
@@ -588,7 +206,7 @@ function getCountryData(country,countryName){
 				            display: true,
 				            fontSize: 20,
 				            fontColor: 'white',
-				            text: 'Recovered for Previous 2 Months - '+countryName
+				            text: countryName+' Recovered for Previous 2 Months'
         				},
 				    	legend: {
 				            labels: {
@@ -694,7 +312,7 @@ function getCountryData(country,countryName){
 				            display: true,
 				            fontSize: 20,
 				            fontColor: 'white',
-				            text: 'Cases for Previous 2 Months - '+countryName
+				            text: countryName+' Cases for Previous 2 Months'
         				},
 				    	legend: {
 				            labels: {
@@ -725,12 +343,12 @@ function getCountryData(country,countryName){
 				    }
 				});
 
-				// Chart for country % of total cases data
+				// Chart for US % of total cases data
 				// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
-    			var removeChart = document.getElementById('country-pie-chart');
+    			var removeChart = document.getElementById('percent-pie-chart');
 				removeChart.parentNode.removeChild(removeChart);
-				document.getElementById('country-pie-dashboard').innerHTML += 
-				'<canvas id="country-pie-chart" width="350" height="350"></canvas>'
+				document.getElementById('percent-pie-dashboard').innerHTML += 
+				'<canvas id="percent-pie-chart" width="350" height="350"></canvas>'
 
 				// These two variables are specific to the pie chart, the second is the total active cases
 				// The first is the regular number of total cases but with the comma separators added
@@ -740,7 +358,7 @@ function getCountryData(country,countryName){
 				var active = data[0].cases - data[0].recovered - data[0].deaths
 
 				// Now we create the chart object, and pass through the data
-    			var ctx = document.getElementById('country-pie-chart').getContext('2d');
+    			var ctx = document.getElementById('percent-pie-chart').getContext('2d');
 				var percentPieChart = new Chart(ctx, {
 				    type: 'pie',
 				    data: {
@@ -831,11 +449,11 @@ function getCountryData(country,countryName){
 				});
 
 				// With a bad request, or no data available, we append that message to the box
-    			var removeChart = document.getElementById('country-pie-chart');
+    			var removeChart = document.getElementById('percent-pie-chart');
 				removeChart.parentNode.removeChild(removeChart);
-				document.getElementById('country-pie-dashboard').innerHTML += 
-				'<canvas id="country-pie-chart" width="350" height="350"></canvas>'
-				var ctx = document.getElementById('country-pie-chart').getContext('2d');
+				document.getElementById('percent-pie-dashboard').innerHTML += 
+				'<canvas id="percent-pie-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('percent-pie-chart').getContext('2d');
 
 				var predChart = new Chart(ctx, {
 					options: {
@@ -916,7 +534,7 @@ function getPredictionData(country,countryName){
 				            display: true,
 				            fontSize: 20,
 				            fontColor: 'white',
-				            text: '1 Week Case Prediction - '+countryName
+				            text: countryName+' 1 Week Case Prediction'
         				},
 				    	legend: {
 				            labels: {
@@ -979,31 +597,124 @@ function getPredictionData(country,countryName){
 	req.send(null);
 };
 
+function getDifferenceData(country,countryName){
+	// Takes a country code as an input and shows the latest changes in cases
+
+	dayDiff = new Date();
+
+	dayDiff.setDate(dayDiff.getDate() - 1);
+	dayDiff = dayDiff.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+	var countryUrl = 'https://cors-anywhere.herokuapp.com/https://covid19-api.org/api/diff/'+country
+
+  	// Creates the response
+	var req = new XMLHttpRequest();
+	req.open("GET", countryUrl, true);
+	req.withCredentials = false;
+	req.onload = function (e) {
+	  	if (req.readyState === 4) {
+	    	if (req.status === 200) {
+
+    			var data = JSON.parse(req.responseText)
+
+    			// Chart for predicted country cases data for 2 weeks
+    			// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+    			var removeChart = document.getElementById('difference-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('difference-dashboard').innerHTML += 
+				'<canvas id="difference-chart" width="350" height="350"></canvas>'
+
+				// Now we create the chart object, and pass through the data
+    			var ctx = document.getElementById('difference-chart').getContext('2d');
+
+				var diffChart = new Chart(ctx, {
+				    type: 'bar',
+				    data: {
+				        labels: ['Cases: '+data.new_cases_percentage+'% Change', 'Recovered: '+data.new_recovered_percentage+'% Change', 
+				        'Deaths: '+data.new_deaths_percentage+'% Change'],
+				        datasets: [{
+				        	fill: false,
+				            label: 'Change since '+dayDiff,
+				            data: [data.new_cases, data.new_recovered, data.new_deaths],
+				            backgroundColor: [
+				            	'rgba(255, 0, 0, 1)', 'rgba(0, 187, 255, 1)', 'rgba(249, 193, 50, 1)'
+				            ],
+				            borderColor: [
+				            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)' 
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'Change since '+dayDiff
+        				},
+				    	legend: {
+				            labels: {
+				                fontColor: 'white'
+				            }
+				        },
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                	fontColor: 'white',
+				                    beginAtZero: true,
+				                    // Found the follow splitting function for chart.js here:
+				                    // https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
+				                    userCallback: function(value, index, values) { 
+								        value = value.toString();
+								        value = value.split(/(?=(?:...)*$)/);
+								        value = value.join(',');
+								        return value;
+    								}
+				                }
+				            }],
+				            xAxes: [{
+				                ticks: {
+				                	fontColor: 'white'
+				                }
+				            }]
+				        }
+				    }
+				});
+
+				
 
 
+	    	} else {
+	      		console.error(req.statusText);
+	      		// With a bad request, or no data available, we append that message to the box
+    			var removeChart = document.getElementById('difference-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('difference-dashboard').innerHTML += 
+				'<canvas id="difference-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('difference-chart').getContext('2d');
 
-// Functions automatically called on page load
-// Germany is the default country passed
-getCountryData('DE','Germany');
-getWorldData();
-getPredictionData('DE','Germany');
+				var diffChart = new Chart(ctx, {
+					options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'No Data Available'
+				        }
+				    }
+				});
 
-function getCountryValue(code) {
-	// When the user selects a new country, the country chart functions
-	// are called again but with the new code
-	// These two varaibles split the passed value into a code and country name
-	var codeValue = code.value
-	var countryCode = code.value.substring(0,2)
-	var countryName = code.value.substring(3,codeValue.length)
-
-	// Passes the new code and name and rebuilds the charts
-  	getCountryData(countryCode,countryName);
-	getPredictionData(countryCode,countryName);
-}
-
-
-
+	    	}
+	  	}
+	};
+	req.onerror = function (e) {
+	  console.error(req.statusText);
+	};
+	req.send(null);
+};
 
 
-
-
+// US is the default country passed
+getUsData('US','United States');
+getDifferenceData('US','United States');
+getPredictionData('US','United States');

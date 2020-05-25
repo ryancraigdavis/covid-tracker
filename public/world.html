@@ -31,6 +31,8 @@
 
 		<div class="section-header">
 			<h1>COVID-19 World Dashboard</h1>
+			<h4>World data displayed first</h4>
+			<h4>Select a country to see detailed data below</h4>
 		</div>
 
 		<div class="dashboard-main-container">	
@@ -39,6 +41,10 @@
 
 		
 			<div class="dashboard-container">
+
+				<div class="dashboard-child" id="percent-pie-dashboard">
+					<canvas id="percent-pie-chart" width="350" height="350"></canvas>
+				</div>
 
 				<div class="dashboard-child" id="total-recovered">
 					<canvas id="cases-world-chart" width="350" height="350"></canvas>
@@ -50,6 +56,10 @@
 
 				<div class="dashboard-child" id="total-dead">
 					<canvas id="dead-world-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="country-pie-dashboard">
+					<canvas id="country-pie-chart" width="350" height="350"></canvas>
 				</div>
 
 				<div class="dashboard-child" id="cases-country-dashboard">
