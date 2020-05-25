@@ -32,12 +32,6 @@
 
 		<div class="slider-news-container">
 
-			<div class="newsfeed">
-				<div id="newsfeed" style="height: 500px;border:1px solid #4e4e4e;overflow:auto;">
-
-				</div>
-			</div>	
-
 			<div class="slider">
 				<div class="carousel"> <!-- Code for carousel from Bootstrap -->
 					<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -71,30 +65,41 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="newsfeed">
+				<div id="newsfeed">
+					<div class="newsfeed-header">
+					<h3>COVID-19 Newsfeed</h3>
+					<p>An automated newsfeed of the latest COVID19 news</p>
+					</div>
+					<div id="newsfeed-bad-api"></div>
+				</div>
+			</div>	
+
 		</div>
 
 		<div class="section-header">
-			<h3>Recent COVID-19 News</h3>
-			<p>A curated set of important recent news</p>
+			<h3>COVID-19 Data</h3>
+			<p>Download important health data here for your own safety and analysis</p>
 		</div>
 
-		<div class="curated-news-container">
-			<div class="news-child">
-				<a href="https://www.washingtonpost.com/health/more-evidence-emerges-on-why-covid-19-is-so-much-worse-than-the-flu/2020/05/21/e7814588-9ba5-11ea-a2b3-5c3f2d1586df_story.html" target="_blank">
-					<img src="images/news/wpost.jpeg">
-					<p>More evidence emerges on why covid-19 is so much worse than the flu - Washington Post<p>
+		<div class="download-container">
+			<div class="download-child">
+				<a href="https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-2020-05-25.xlsx" download="ECDCMay20">
+					<img src="images/downloads/ecdc.png">
+					<p>Click to download European CDC data for May 20th<p>
 				</a>
 			</div>
-			<div class="news-child">
-				<a href="https://www.cnn.com/2020/05/22/health/us-coronavirus-friday/index.html" target="_blank">
-					<img src="images/news/cnnhydro.jpeg">
-					<p>Drug touted by Trump as Covid-19 treatment linked to a greater risk of death, study finds - CNN<p>
+			<div class="download-child">
+				<a href="https://ihmecovid19storage.blob.core.windows.net/latest/ihme-covid19.zip"  download="IHMELatest">
+					<img src="images/downloads/ihme.png">
+					<p>Click to download the latest IHME (Institute for Health Metrics and Evaluation) COVID19 data<p>
 				</a>
 			</div>
-			<div class="news-child">
-				<a href="https://abcnews.go.com/Health/coronavirus-updates-covid-19-study-aims-vaccinate-10000/story?id=70824051"  target="_blank">
-					<img src="images/news/abcnews.jpeg">
-					<p>Coronavirus updates: Hydroxychloroquine given to 1,300 US veterans with COVID-19 - ABC News<p>
+			<div class="download-child">
+				<a href="https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf"  download="CDCFactsheet">
+					<img src="images/downloads/cdc_badge.png">
+					<p>Click to go to a pdf fact sheet on COVID19 that you can download from the CDC<p>
 				</a>
 			</div>
 

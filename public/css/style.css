@@ -21,24 +21,53 @@ body {
 }
 
 .slider-news-container {
-	padding: 30px;
-	display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: stretch;
-	align-content: stretch;
+	padding: 30px; 
+	display: flex;
+	flex-direction: column; 
+
+
 }
 
 .newsfeed {
+	margin-top: 30px;
+	flex: 1;
+	overflow-y: auto; 
+	max-height: 500px;
 	padding: 30px;
-    border: 2px solid #EEE;
-    background-color: 545454;
-    display: flex;
-    flex: 1 1 10px;
-    color: #F9C132;
-    text-align: center;
-	flex-direction: row;
+    color: white;
+    background-color: #4e4e4e;
+    border-radius: 15px;
+}
+
+.newsfeed table td {
+	padding: 5px;
+	color: white;
+}
+
+.newsfeed table tr {
+	padding: 20px;
+	border: 2px solid black;
+	border-radius: 5px;
+
+}
+
+.newsfeed table td img {
+	height: auto;
+	max-width: 200px;
+}
+
+.slider {
+	flex: 4;
+}
+
+.newsfeed-header {
+	margin-top: 5px;
+	text-align: center;
+	color: white;
+	font-size: 14;
+}
+
+.slider {
 }
 
 .section-header {
@@ -59,10 +88,10 @@ body {
 	color: white;
 }
 
-.curated-news-container {
+.download-container {
 	padding: 30px;
     margin: auto;
-    display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
+    display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: flex-start;
@@ -70,17 +99,31 @@ body {
 	align-content: stretch;
 }
 
-.news-child {
+.download-child {
 	padding: 30px;
 	margin: auto;
-    border: 2px solid #EEE;
-    background-color: 545454;
+    background-color: white;
   	border-radius: 10px;
     display: flex;
     flex: 0 0 30px;
-    color: #F9C132;
+    color: black;
     text-align: center;
 	flex-direction: column;
+	justify-content: space-between;
+}
+
+.download-child img {
+	height: auto;
+	max-width: 200px;
+}
+
+.download-child p {
+	text-align: left;
+}
+
+.download-child a:link {
+  	color: blue;
+  	font-style: underline;
 }
 
 .form-container {
@@ -101,10 +144,7 @@ form {
 
 a:link {
   	color: white;
-}
-
-a:visited {
-  color: #a0a0a0;
+  	font-style: underline;
 }
 
 footer {
