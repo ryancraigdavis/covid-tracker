@@ -25,8 +25,8 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
     // This simply pushes the form submission into an array
     // Typically this would be saving to a database instead
-    formSubmits.push(req.body)
-
+    formSubmits.push(req.body);
+    console.log(formSubmits);
 	res.send('Success');
 });
 
@@ -38,6 +38,7 @@ app.post('/news', function(req, res){
 
     request(newsUrl, function(error,response,body){
         var apiResponse = body;
+        console.log('API Call Success');
         res.send(apiResponse);
   });
 });
