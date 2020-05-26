@@ -35,7 +35,7 @@ function getNews(){
         "destination": url
     };
 
-    req.open('POST', 'http://flip2.engr.oregonstate.edu:1337/news', true);
+    req.open('POST', 'http://18.144.126.212:80/news', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){

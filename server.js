@@ -57,5 +57,5 @@ app.get('/us', function(req, res){
     res.sendFile(path, {root: './public'});
 });
 
-console.log('Express started on http://flip2.engr.oregonstate.edu:1337; press Ctrl-C to terminate.');
-http.createServer(app).listen(1337);
+console.log('Express started on http://18.144.126.212:80; press Ctrl-C to terminate.');
+http.createServer(app).listen(80);

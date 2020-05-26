@@ -18,7 +18,7 @@ function getInfo(){
         "email": email
     };
 
-    req.open('POST', 'http://flip2.engr.oregonstate.edu:1337/', true);
+    req.open('POST', 'http://18.144.126.212:80/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){
