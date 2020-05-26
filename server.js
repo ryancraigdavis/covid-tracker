@@ -38,7 +38,6 @@ app.post('/news', function(req, res){
 
     request(newsUrl, function(error,response,body){
         var apiResponse = body;
-        console.log('API Call Success');
         res.send(apiResponse);
   });
 });
