@@ -6,7 +6,6 @@ document.getElementById("submitForm").addEventListener("click", getInfo);
 // An alert happens if it was a success
 function getInfo(){
     event.preventDefault();
-    console.log('what')
     // Creates the request
     var req = new XMLHttpRequest();
 
@@ -19,7 +18,7 @@ function getInfo(){
         "email": email
     };
 
-    req.open('POST', 'http://localhost:3000/', true);
+    req.open('POST', 'http://flip2.engr.oregonstate.edu:1337/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
       if(req.status >= 200 && req.status < 400){
