@@ -31,6 +31,7 @@
 
 		<div class="section-header">
 			<h1>COVID-19 US Dashboard</h1>
+			<h4>US COVID19 Data and Statistics including vaccine and labor statistics</h4>
 		</div>
 
 		<div class="dashboard-main-container">	
@@ -46,6 +47,14 @@
 					<canvas id="labor-chart" width="350" height="350"></canvas>
 				</div>	
 
+				<div class="dashboard-child" id="vaccine-dashboard">
+					<canvas id="vaccine-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="difference-dashboard">
+					<canvas id="difference-chart" width="350" height="350"></canvas>
+				</div>
+
 				<div class="dashboard-child" id="cases-country-dashboard">
 					<canvas id="cases-country-chart" width="350" height="350"></canvas>
 				</div>
@@ -60,11 +69,7 @@
 
 				<div class="dashboard-child" id="dead-country-dashboard">
 					<canvas id="dead-country-chart" width="350" height="350"></canvas>
-				</div>
-
-				<div class="dashboard-child" id="difference-dashboard">
-					<canvas id="difference-chart" width="350" height="350"></canvas>
-				</div>				
+				</div>			
 
 			</div>
 
@@ -76,7 +81,7 @@
 
 	<footer>
 		<p>Copyright Ryan Davis 2020 - daviryan@oregonstate.edu</p>
-		<p>Case, Recovered, Data - https://covid19-api.org/ API | Labor Data - Bureau of Labor Statistics API</p>
+		<p>Case Data - https://covid19-api.org/ API | Labor Data - Bureau of Labor Statistics API | Vaccine Data - London School of Hygiene, Milken Institute via Wikipedia</p>
 	</footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -84,10 +89,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script src="scripts/us.js"></script>
 </html>
-
-
-
-
-
-
-

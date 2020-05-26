@@ -75,9 +75,10 @@ body {
 	font-size: 14;
 }
 
-/*Slider is 4X bigger than Newsfeed*/
 .slider {
-	flex: 4;
+	flex: 3;
+	padding-left: 150px;
+	padding-right: 150px;
 }
 
 /*Headers*/

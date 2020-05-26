@@ -249,6 +249,5 @@ var countryList = [
 ]
 
 for (var i = 0; i < countryList.length; i++) {
-	document.getElementById('country-dropdown-select').innerHTML += 
-'<option class="dropdown-item" id="countrycode-select" value="'+[countryList[i].code,countryList[i].name]+'">'+countryList[i].name+'</option>'
+	document.getElementById('country-dropdown-select').innerHTML += '<option class="dropdown-item" id="countrycode-select" value="'+[countryList[i].code,countryList[i].name]+'">'+countryList[i].name+'</option>'
 };

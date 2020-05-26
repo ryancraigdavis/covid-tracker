@@ -39,24 +39,7 @@
 			
 			<select id="country-dropdown-select" class="dropdown-select" onchange="getCountryValue(this)"></select>
 
-		
 			<div class="dashboard-container">
-
-				<div class="dashboard-child" id="percent-pie-dashboard">
-					<canvas id="percent-pie-chart" width="350" height="350"></canvas>
-				</div>
-
-				<div class="dashboard-child" id="total-recovered">
-					<canvas id="cases-world-chart" width="350" height="350"></canvas>
-				</div>
-
-				<div class="dashboard-child" id="total-cases">
-					<canvas id="recovered-world-chart" width="350" height="350"></canvas>
-				</div>
-
-				<div class="dashboard-child" id="total-dead">
-					<canvas id="dead-world-chart" width="350" height="350"></canvas>
-				</div>
 
 				<div class="dashboard-child" id="country-pie-dashboard">
 					<canvas id="country-pie-chart" width="350" height="350"></canvas>
@@ -77,10 +60,24 @@
 				<div class="dashboard-child" id="dead-country-dashboard">
 					<canvas id="dead-country-chart" width="350" height="350"></canvas>
 				</div>
+				
+				<div class="dashboard-child" id="percent-pie-dashboard">
+					<canvas id="percent-pie-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="total-recovered">
+					<canvas id="cases-world-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="total-cases">
+					<canvas id="recovered-world-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="dashboard-child" id="total-dead">
+					<canvas id="dead-world-chart" width="350" height="350"></canvas>
+				</div>
 
 			</div>
-
-			
 
 		</div>
 	
@@ -88,6 +85,7 @@
 
 	<footer>
 		<p>Copyright Ryan Davis 2020 - daviryan@oregonstate.edu</p>
+		<p>Case Data - https://covid19-api.org/ API</p>
 	</footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -96,10 +94,3 @@
 <script src="scripts/world.js"></script>
 <script src="scripts/country-dropdown.js"></script>
 </html>
-
-
-
-
-
-
-

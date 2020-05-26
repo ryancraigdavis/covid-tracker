@@ -5,6 +5,7 @@ var tableBody = document.createElement("tbody");
 var row = document.createElement("tr");
 
 function getNews(){
+	// Data from: https://newsapi.org/
 
 	// Date help from 2 stack overflows with many revisions
 	// https://stackoverflow.com/questions/1296358/subtract-days-from-a-date-in-javascript
@@ -17,8 +18,6 @@ function getNews(){
 	todayNews = todayNews.toLocaleDateString('fr-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
 	prevDayNews.setDate(prevDayNews.getDate() - 5);
 	prevDayNews = prevDayNews.toLocaleDateString('fr-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
-
-	console.log(todayNews);
 
 	// Initial variables from the api
 
@@ -36,7 +35,6 @@ function getNews(){
 
     			// Data for the table - code similar to Week 6
     			var data = JSON.parse(req.responseText)
-    			console.log(data)
 
     			// This loop goes through each of the articles and creates a table with the image, title, source, link,
     			// and description appended to each row of the table.

@@ -1,7 +1,6 @@
-// Get the country - default is US and is passed at the beginning
-
 function getUsData(country,countryName){
 	// Takes a country code as an input and produces a set of charts based on that country
+	// Data from: https://covid19-api.org/
 
 	dateRange = [];
 	day = new Date();
@@ -476,6 +475,7 @@ function getUsData(country,countryName){
 
 function getPredictionData(country,countryName){
 	// Takes a country code as an input and produces a prediction chart based on that country
+	// Data from: https://covid19-api.org/
 	
 	dateRangePred = [];
 	predDay = new Date();
@@ -599,6 +599,7 @@ function getPredictionData(country,countryName){
 
 function getDifferenceData(country,countryName){
 	// Takes a country code as an input and shows the latest changes in cases
+	// Data from: https://covid19-api.org/
 
 	dayDiff = new Date();
 
@@ -715,6 +716,7 @@ function getDifferenceData(country,countryName){
 
 function getUsLaborData(){
 	// Creates a chart of latest month by month Unemployment data
+	// Data from: https://www.bls.gov/developers/
 
 	dayLabor = new Date();
 
@@ -837,36 +839,67 @@ function getUsLaborData(){
 
 function getOtherData(){
 	// Creates a chart of vaccine candidates and state shutdowns
+	// Data from: https://en.wikipedia.org/wiki/COVID-19_vaccine
 
 
 	// Chart for past 3 months of unemployment data
 	// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
-	var removeChart = document.getElementById('labor-chart');
+	var removeChart = document.getElementById('vaccine-chart');
 	removeChart.parentNode.removeChild(removeChart);
-	document.getElementById('labor-dashboard').innerHTML += 
-	'<canvas id="labor-chart" width="350" height="350"></canvas>'
+	document.getElementById('vaccine-dashboard').innerHTML += 
+	'<canvas id="vaccine-chart" width="350" height="350"></canvas>'
 
 	// Now we create the chart object, and pass through the data
-	var ctx = document.getElementById('labor-chart').getContext('2d');
+	var ctx = document.getElementById('vaccine-chart').getContext('2d');
 
-	var laborChart = new Chart(ctx, {
-	    type: 'line',
+	var vaccineChart = new Chart(ctx, {
+	    type: 'bar',
 	    data: {
-	        labels: [laborData[4].periodName+' - '+laborData[4].year, laborData[3].periodName+' - '+laborData[3].year, 
-	        laborData[2].periodName+' - '+laborData[2].year, laborData[1].periodName+' - '+laborData[1].year, 
-	        laborData[0].periodName+' - '+laborData[0].year],
+	        labels: ['Non-replicating viral vector', 'RNA-based', 'DNA-based', 'Inactivated virus', 
+	        'Undefined', 'Protein subunit', 'Replicating viral vector', 'Virus-like particle', 
+	        'Live attenuated virus', 'Replicating bacterial vector'],
 	        datasets: [{
 	        	fill: false,
-	            label: 'Unemployment %',
-	            data: [laborData[4].value, laborData[3].value, laborData[2].value, laborData[1].value, 
-	            laborData[0].value],
+	            label: 'Pre-Clinical',
+	            data: [15, 19, 11, 7, 36, 47, 13, 7, 3, 1],
 	            backgroundColor: [
-	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 
-	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)'
+	            	'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)', 
+	            	'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)', 
+	            	'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)', 'rgba(99, 223, 237, 1)'
 	            ],
 	            borderColor: [
-	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 
-	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)'  
+	            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
+	            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)'
+	            ],
+	            borderWidth: 1
+	        },
+	        {
+	        	fill: false,
+	            label: 'Phase 1',
+	            data: [0, 2, 1, 2, 4, 1, 0, 0, 0, 0],
+	            backgroundColor: [
+	            	'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)', 
+	            	'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)', 
+	            	'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)', 'rgba(103, 252, 155, 1)'
+	            ],
+	            borderColor: [
+	            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
+	            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)'
+	            ],
+	            borderWidth: 1
+	        },
+	        {
+	        	fill: false,
+	            label: 'Phase 2',
+	            data: [2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	            backgroundColor: [
+	            	'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)', 
+	            	'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)', 
+	            	'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)', 'rgba(242, 103, 252, 1)'
+	            ],
+	            borderColor: [
+	            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 
+	            	'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)'
 	            ],
 	            borderWidth: 1
 	        }]
@@ -876,7 +909,7 @@ function getOtherData(){
 	            display: true,
 	            fontSize: 20,
 	            fontColor: 'white',
-	            text: 'BLS US Unemployment %'
+	            text: 'Vaccine Candidates by Phase and Molecular Platform'
 			},
 	    	legend: {
 	            labels: {
@@ -885,6 +918,7 @@ function getOtherData(){
 	        },
 	        scales: {
 	            yAxes: [{
+	            	stacked: true,
 	                ticks: {
 	                	fontColor: 'white',
 	                    beginAtZero: true,
@@ -899,6 +933,7 @@ function getOtherData(){
 	                }
 	            }],
 	            xAxes: [{
+	            	stacked: true,
 	                ticks: {
 	                	fontColor: 'white'
 	                }
@@ -909,9 +944,9 @@ function getOtherData(){
 
 };
 
-
-// US is the default country passed
+// US is passed for this Dashboard
 getUsData('US','United States');
 getDifferenceData('US','United States');
 getPredictionData('US','United States');
 getUsLaborData()
+getOtherData()
