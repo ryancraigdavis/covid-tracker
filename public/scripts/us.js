@@ -713,8 +713,205 @@ function getDifferenceData(country,countryName){
 	req.send(null);
 };
 
+function getUsLaborData(){
+	// Creates a chart of latest month by month Unemployment data
+
+	dayLabor = new Date();
+
+	dayLabor.setDate(dayLabor.getDate() - 1);
+	dayLabor = dayLabor.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+	var laborUrl = 'https://cors-anywhere.herokuapp.com/http://api.bls.gov/publicAPI/v1/timeseries/data/LNS14000000'
+
+  	// Creates the response
+	var req = new XMLHttpRequest();
+	req.open("GET", laborUrl, true);
+	req.withCredentials = false;
+	req.onload = function (e) {
+	  	if (req.readyState === 4) {
+	    	if (req.status === 200) {
+
+    			var data = JSON.parse(req.responseText)
+    			var laborData = data.Results.series[0].data
+    			console.log(laborData)
+
+    			// Chart for past 3 months of unemployment data
+    			// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+    			var removeChart = document.getElementById('labor-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('labor-dashboard').innerHTML += 
+				'<canvas id="labor-chart" width="350" height="350"></canvas>'
+
+				// Now we create the chart object, and pass through the data
+    			var ctx = document.getElementById('labor-chart').getContext('2d');
+
+				var laborChart = new Chart(ctx, {
+				    type: 'line',
+				    data: {
+				        labels: [laborData[4].periodName+' - '+laborData[4].year, laborData[3].periodName+' - '+laborData[3].year, 
+				        laborData[2].periodName+' - '+laborData[2].year, laborData[1].periodName+' - '+laborData[1].year, 
+				        laborData[0].periodName+' - '+laborData[0].year],
+				        datasets: [{
+				        	fill: false,
+				            label: 'Unemployment %',
+				            data: [laborData[4].value, laborData[3].value, laborData[2].value, laborData[1].value, 
+				            laborData[0].value],
+				            backgroundColor: [
+				            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 
+				            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)'
+				            ],
+				            borderColor: [
+				            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 
+				            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)'  
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'BLS US Unemployment %'
+        				},
+				    	legend: {
+				            labels: {
+				                fontColor: 'white'
+				            }
+				        },
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                	fontColor: 'white',
+				                    beginAtZero: true,
+				                    // Found the follow splitting function for chart.js here:
+				                    // https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
+				                    userCallback: function(value, index, values) { 
+								        value = value.toString();
+								        value = value.split(/(?=(?:...)*$)/);
+								        value = value.join(',');
+								        return value;
+    								}
+				                }
+				            }],
+				            xAxes: [{
+				                ticks: {
+				                	fontColor: 'white'
+				                }
+				            }]
+				        }
+				    }
+				});
+
+				
+
+
+	    	} else {
+	      		console.error(req.statusText);
+	      		// With a bad request, or no data available, we append that message to the box
+    			var removeChart = document.getElementById('labor-chart');
+				removeChart.parentNode.removeChild(removeChart);
+				document.getElementById('labor-dashboard').innerHTML += 
+				'<canvas id="labor-chart" width="350" height="350"></canvas>'
+				var ctx = document.getElementById('labor-chart').getContext('2d');
+
+				var diffChart = new Chart(ctx, {
+					options: {
+				    	title: {
+				            display: true,
+				            fontSize: 20,
+				            fontColor: 'white',
+				            text: 'No Data Available'
+				        }
+				    }
+				});
+
+	    	}
+	  	}
+	};
+	req.onerror = function (e) {
+	  console.error(req.statusText);
+	};
+	req.send(null);
+};
+
+function getOtherData(){
+	// Creates a chart of vaccine candidates and state shutdowns
+
+
+	// Chart for past 3 months of unemployment data
+	// First we must clear any chart already there - https://stackoverflow.com/questions/3387427/remove-element-by-id
+	var removeChart = document.getElementById('labor-chart');
+	removeChart.parentNode.removeChild(removeChart);
+	document.getElementById('labor-dashboard').innerHTML += 
+	'<canvas id="labor-chart" width="350" height="350"></canvas>'
+
+	// Now we create the chart object, and pass through the data
+	var ctx = document.getElementById('labor-chart').getContext('2d');
+
+	var laborChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	        labels: [laborData[4].periodName+' - '+laborData[4].year, laborData[3].periodName+' - '+laborData[3].year, 
+	        laborData[2].periodName+' - '+laborData[2].year, laborData[1].periodName+' - '+laborData[1].year, 
+	        laborData[0].periodName+' - '+laborData[0].year],
+	        datasets: [{
+	        	fill: false,
+	            label: 'Unemployment %',
+	            data: [laborData[4].value, laborData[3].value, laborData[2].value, laborData[1].value, 
+	            laborData[0].value],
+	            backgroundColor: [
+	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 
+	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)'
+	            ],
+	            borderColor: [
+	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)', 
+	            	'rgba(186, 98, 234, 1)', 'rgba(186, 98, 234, 1)'  
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	    	title: {
+	            display: true,
+	            fontSize: 20,
+	            fontColor: 'white',
+	            text: 'BLS US Unemployment %'
+			},
+	    	legend: {
+	            labels: {
+	                fontColor: 'white'
+	            }
+	        },
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                	fontColor: 'white',
+	                    beginAtZero: true,
+	                    // Found the follow splitting function for chart.js here:
+	                    // https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
+	                    userCallback: function(value, index, values) { 
+					        value = value.toString();
+					        value = value.split(/(?=(?:...)*$)/);
+					        value = value.join(',');
+					        return value;
+						}
+	                }
+	            }],
+	            xAxes: [{
+	                ticks: {
+	                	fontColor: 'white'
+	                }
+	            }]
+	        }
+	    }
+	});
+
+};
+
 
 // US is the default country passed
 getUsData('US','United States');
 getDifferenceData('US','United States');
 getPredictionData('US','United States');
+getUsLaborData()

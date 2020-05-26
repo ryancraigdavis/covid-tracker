@@ -19,15 +19,14 @@ body {
     margin-right: auto;
     margin-left: auto;
 }
-
+/*Slider and Newsfeed Container*/
 .slider-news-container {
 	padding: 30px; 
 	display: flex;
 	flex-direction: column; 
-
-
 }
 
+/*Newsfeed*/
 .newsfeed {
 	margin-top: 30px;
 	flex: 1;
@@ -44,20 +43,29 @@ body {
 	color: white;
 }
 
+/*Table Borders*/
 .newsfeed table tr {
 	padding: 20px;
-	border: 2px solid black;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
 	border-radius: 5px;
+}
 
+.newsfeed table tr:nth-of-type(2n) td {
+	border-bottom: 2px solid black;
+}
+
+.newsfeed table tr:nth-of-type(odd) td {
+	border-top: 2px solid black;
+}
+
+.newsfeed table tr td:nth-of-type(3n+0) {
+	border-right: 2px solid black;
 }
 
 .newsfeed table td img {
 	height: auto;
 	max-width: 200px;
-}
-
-.slider {
-	flex: 4;
 }
 
 .newsfeed-header {
@@ -67,9 +75,12 @@ body {
 	font-size: 14;
 }
 
+/*Slider is 4X bigger than Newsfeed*/
 .slider {
+	flex: 4;
 }
 
+/*Headers*/
 .section-header {
 	margin-top: 30px;
 	text-align: center;
@@ -88,6 +99,7 @@ body {
 	color: white;
 }
 
+/*Download Container*/
 .download-container {
 	padding: 30px;
     margin: auto;
@@ -126,6 +138,7 @@ body {
   	font-style: underline;
 }
 
+/*Form Container*/
 .form-container {
 	padding: 30px;
 	padding-right: 250px;
@@ -142,8 +155,9 @@ form {
 	border-radius: 10px;
 }
 
+/*Links and Footer*/
 a:link {
-  	color: white;
+  	color: #63dfed;
   	font-style: underline;
 }
 

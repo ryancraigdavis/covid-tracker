@@ -7,10 +7,10 @@
 .dashboard-container {
 	padding: 10px;
     margin: auto;
-    display: flex; /* Used tutorial from https://flexbox.help/ to understand Flexboxes */
+    display: flex; /* Used Mozilla documentation to understand Flexboxes */
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: stretch;
 	align-content: stretch;
 }
