@@ -19,8 +19,8 @@
 		  	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		    	<div class="navbar-nav">
 		      		<a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-		      		<a class="nav-item nav-link active" href="/world">World Dashboard</a>
-		      		<a class="nav-item nav-link" href="/countries">Country Compare Dashboard</a>
+		      		<a class="nav-item nav-link" href="/world">World Dashboard</a>
+		      		<a class="nav-item nav-link active" href="/countries">Country Compare Dashboard</a>
 		      		<a class="nav-item nav-link" href="/us">US Dashboard</a>
 		      		<a class="nav-item nav-link" href="/about">About the Disease</a>
 		    	</div>
@@ -31,51 +31,55 @@
 	<div class="main-container">
 
 		<div class="section-header">
-			<h1>COVID-19 World Dashboard</h1>
-			<h4>World data displayed first</h4>
-			<h4>Select a country to see detailed data below</h4>
+			<h1>COVID-19 Country Comparison Dashboard</h1>
+			<h4>Select two countries to see how their data compares</h4>
 		</div>
 
 		<div class="dashboard-main-container">	
-			
-			<select id="country-dropdown-select" class="dropdown-select" onchange="getCountryValue(this)"></select>
+			<div class="compare-select-container">
+				<select id="country-dropdown-select" class="dropdown-select" onchange="getFirstCountryValue(this)"></select>
+				<select id="second-country-dropdown-select" class="second-dropdown-select" onchange="getSecondCountryValue(this)"></select>
+			</div>
+			<div class="compare-dashboard-container">
 
-			<div class="dashboard-container">
-
-				<div class="dashboard-child" id="country-pie-dashboard">
-					<canvas id="country-pie-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="first-country-pie-dashboard">
+					<canvas id="first-country-pie-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="cases-country-dashboard">
-					<canvas id="cases-country-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="second-country-pie-dashboard">
+					<canvas id="second-country-pie-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="prediction-country-dashboard">
-					<canvas id="prediction-country-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="first-cases-country-dashboard">
+					<canvas id="first-cases-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="recovered-country-dashboard">
-					<canvas id="recovered-country-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="second-cases-country-dashboard">
+					<canvas id="second-cases-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="dead-country-dashboard">
-					<canvas id="dead-country-chart" width="350" height="350"></canvas>
-				</div>
-				
-				<div class="dashboard-child" id="percent-pie-dashboard">
-					<canvas id="percent-pie-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="first-prediction-country-dashboard">
+					<canvas id="first-prediction-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="total-recovered">
-					<canvas id="cases-world-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="second-prediction-country-dashboard">
+					<canvas id="second-prediction-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="total-cases">
-					<canvas id="recovered-world-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="first-recovered-country-dashboard">
+					<canvas id="first-recovered-country-chart" width="350" height="350"></canvas>
 				</div>
 
-				<div class="dashboard-child" id="total-dead">
-					<canvas id="dead-world-chart" width="350" height="350"></canvas>
+				<div class="compare-dashboard-child" id="second-recovered-country-dashboard">
+					<canvas id="second-recovered-country-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="compare-dashboard-child" id="first-dead-country-dashboard">
+					<canvas id="first-dead-country-chart" width="350" height="350"></canvas>
+				</div>
+
+				<div class="compare-dashboard-child" id="second-dead-country-dashboard">
+					<canvas id="second-dead-country-chart" width="350" height="350"></canvas>
 				</div>
 
 			</div>
@@ -92,6 +96,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script src="scripts/world.js"></script>
+<script src="scripts/countries.js"></script>
+<script src="scripts/second-country-dropdown.js"></script>
 <script src="scripts/country-dropdown.js"></script>
 </html>

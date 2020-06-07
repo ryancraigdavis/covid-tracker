@@ -26,6 +26,39 @@
 	flex-direction: row;
 }
 
+.compare-dashboard-container {
+	padding-right: 150px;
+	padding-left: 150px;
+    margin: auto;
+    display: flex; /* Used Mozilla documentation to understand Flexboxes */
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.compare-select-container {
+    margin: auto;
+    display: flex; /* Used Mozilla documentation to understand Flexboxes */
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.compare-dashboard-child {
+	padding-right: 25px;
+	padding-left: 25px;
+    border: 2px solid #EEE;
+    background-color: #6b6b6b;
+    display: flex;
+    flex: 0 50%;
+    text-align: left;
+	flex-direction: row;
+}
+
 input {
 	width: 300px;
 }
